@@ -29,7 +29,7 @@ export default function App() {
       {dis !== "" ? (
         <Table month={inref.current.value} />
       ) : (
-        <p className="noData">"Choose a month (1 to 40) for Chit selection"</p>
+          <p className="noData">"Choose a month <span>(1 to 40)</span> for Chit selection"</p>
       )}
     </div>
   );
