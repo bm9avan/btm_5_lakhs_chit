@@ -18,7 +18,7 @@ export default function Table({ month }) {
     return (
         <>
             <h3>
-                You will recive amount {arr.amount} in {month}th month
+                You will recive amount {arr[+month - 1] ? arr[+month - 1].amount : ''} in {month}th month
             </h3>
             <table className="result">
                 <thead>

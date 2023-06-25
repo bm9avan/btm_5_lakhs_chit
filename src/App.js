@@ -1,10 +1,13 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./index.css";
 import Table from "./Table";
 
 export default function App() {
   const [dis, setDis] = useState("");
   const inref = useRef();
+  useEffect(()=>{
+    inref.current.focus()
+  },[])
   function printHandler(e) {
     e.preventDefault();
     setDis(inref.current.value);
@@ -21,7 +24,7 @@ export default function App() {
       </h4>
       <form onSubmit={printHandler}>
         <label htmlFor="inMonth">Month: </label>
-        <input ref={inref} type="number" min="1" max="40" id="inMonth"></input>
+        <input ref={inref} type="number" min="1" max="40" id="inMonth" placeholder="Enter Month"></input>
       </form>
       {dis !== "" ? (
         <Table month={inref.current.value} />
