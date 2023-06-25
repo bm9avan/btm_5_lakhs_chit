@@ -17,7 +17,7 @@ export default function App() {
     <div className="App">
       <h2>Manjunath - 9902781386</h2>
       <h4>
-        40 Months <span>5 Lakh Chit</span>
+        40 Months <span>5 Lakhs Chit</span>
       </h4>
       <form onSubmit={printHandler}>
         <label htmlFor="inMonth">Month: </label>
