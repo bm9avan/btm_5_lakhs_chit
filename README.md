@@ -1,4 +1,4 @@
-# btm_5_lakhs_chit
+# btm_chits
 
 It is a web application that helps you track your savings plan and calculate the expected amount to be received in a specific month of a chit scheme.
 
