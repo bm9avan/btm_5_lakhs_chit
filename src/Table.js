@@ -4,7 +4,7 @@ export default function Table({ month, chit }) {
     const [arr, setArr] = useState([]);
     useEffect(() => {
         let fakearr = [];
-        if(chit === 0){
+        if (chit === 0) {
             let amount = 472500;
             for (let i = 0; i < 40; i++) {
                 if (i > 32) {
@@ -14,25 +14,17 @@ export default function Table({ month, chit }) {
                 }
                 fakearr.push({ i: i + 1, amount });
             }
-        }else if(chit === 1){
-            let amount = 472500;
+        } else {
+            let haraaju = 24000;
+            let profit = 1000
             for (let i = 0; i < 20; i++) {
-                if (i > 32) {
-                    amount += 5000;
+                haraaju -= 1000
+                profit -= 50
+                if (chit === 1) {
+                    fakearr.push({ i: i + 1, haraaju: haraaju * 2, profit: profit * 2, emi: (5000 - profit) * 2 });
                 } else {
-                    amount += 2500;
+                    fakearr.push({ i: i + 1, haraaju, profit, emi: 5000 - profit });
                 }
-                fakearr.push({ i: i + 1, amount });
-            }
-        }else{
-            let amount = 472500;
-            for (let i = 0; i < 10; i++) {
-                if (i > 32) {
-                    amount += 5000;
-                } else {
-                    amount += 2500;
-                }
-                fakearr.push({ i: i + 1, amount });
             }
         }
         setArr(fakearr);
@@ -42,7 +34,7 @@ export default function Table({ month, chit }) {
             <h3>
                 You will recive amount {arr[+month - 1] ? arr[+month - 1].amount : ''} in {month}th month
             </h3>
-            <table className="result">
+            {chit === 0 && <table className="result">
                 <thead>
                     <tr>
                         <th>Month</th>
@@ -61,7 +53,29 @@ export default function Table({ month, chit }) {
                         );
                     })}
                 </tbody>
-            </table>
+            </table>}
+            {chit !== 0 && <table className="result">
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Haraaju</th>
+                        <th>Profit</th>
+                        <th>EMI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {arr.map((each) => {
+                        return (
+                            <tr key={each.i} id={each.i === +month ? "highlight" : ""}>
+                                <td>{each.i} </td>
+                                <td>{each.haraaju}</td>
+                                <td>{each.profit}</td>
+                                <td>{each.emi}</td>
+                            </tr>
+                        );
+                    })}
+                </tbody>
+            </table>}
         </>
     );
 }
