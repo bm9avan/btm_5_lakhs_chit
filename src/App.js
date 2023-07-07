@@ -16,7 +16,7 @@ const options = [
   {
     label: "1 Lakhs",
     value: "1",
-    month: "10"
+    month: "20"
   },
 ];
 
