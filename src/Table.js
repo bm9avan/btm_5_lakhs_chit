@@ -1,20 +1,42 @@
 import React, { useEffect, useState } from "react";
 
-export default function Table({ month }) {
+export default function Table({ month, chit }) {
     const [arr, setArr] = useState([]);
     useEffect(() => {
         let fakearr = [];
-        let amount = 472500;
-        for (let i = 0; i < 40; i++) {
-            if (i > 32) {
-                amount += 5000;
-            } else {
-                amount += 2500;
+        if(chit === 0){
+            let amount = 472500;
+            for (let i = 0; i < 40; i++) {
+                if (i > 32) {
+                    amount += 5000;
+                } else {
+                    amount += 2500;
+                }
+                fakearr.push({ i: i + 1, amount });
             }
-            fakearr.push({ i: i + 1, amount });
+        }else if(chit === 1){
+            let amount = 472500;
+            for (let i = 0; i < 20; i++) {
+                if (i > 32) {
+                    amount += 5000;
+                } else {
+                    amount += 2500;
+                }
+                fakearr.push({ i: i + 1, amount });
+            }
+        }else{
+            let amount = 472500;
+            for (let i = 0; i < 10; i++) {
+                if (i > 32) {
+                    amount += 5000;
+                } else {
+                    amount += 2500;
+                }
+                fakearr.push({ i: i + 1, amount });
+            }
         }
         setArr(fakearr);
-    }, [month]);
+    }, [month, chit]);
     return (
         <>
             <h3>

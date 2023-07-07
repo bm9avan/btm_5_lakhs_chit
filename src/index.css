@@ -34,7 +34,7 @@ label {
   margin-right: 10px;
 }
 
-input {
+select, input {
   width: 60%;
   padding: 10px;
   border: none;
@@ -44,7 +44,12 @@ input {
   transition: background-color 0.3s;
 }
 
-input:focus {
+select{
+  width : auto;
+  border: 3px solid sandybrown;
+}
+
+select:focus, input:focus {
   outline: none;
   background-color: #e8e8e8;
 }
