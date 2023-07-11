@@ -4,17 +4,22 @@ import Table from "./Table";
 
 const options = [
   {
-    label: "5 Lakhs",
-    value: "5",
+    label: "5 Lakhs(20 Months)",
+    value: "5-20",
+    month: "20"
+  },
+  {
+    label: "5 Lakhs(40 Months)",
+    value: "5-40",
     month: "40"
   },
   {
-    label: "2 Lakhs",
+    label: "2 Lakhs(20 Months)",
     value: "2",
     month: "20"
   },
   {
-    label: "1 Lakhs",
+    label: "1 Lakhs(20 Months)",
     value: "1",
     month: "20"
   },
@@ -29,12 +34,14 @@ export default function App() {
   }, [])
 
   function functionSet(v) {
-    if (v === '5') {
+    if (v === '5-20') {
       setChit(0)
-    } else if (v === '2') {
+    } else if (v === '5-40') {
       setChit(1)
-    } else {
+    } else if (v === '2') {
       setChit(2)
+    } else {
+      setChit(3)
     }
     setDis("");
     inref.current.value = "";
@@ -54,14 +61,13 @@ export default function App() {
       <h2>Manjunath - 9902781386</h2>
       <h4>
 
-        {options[chit].month} Months <span><select value={options[chit].value} onChange={(e) => functionSet(e.target.value)}>
+        <span><select value={options[chit].value} onChange={(e) => functionSet(e.target.value)}>
           {options.map((option) => (
             <option key={option.value} value={option.value}>{option.label}</option>
           ))}
         </select></span>
       </h4>
       <form onSubmit={printHandler}>
-        <label htmlFor="inMonth">Month: </label>
         <input ref={inref} type="number" min="1" max={options[chit].month} id="inMonth" placeholder="Enter Month"></input>
       </form>
       {dis !== "" ? (
